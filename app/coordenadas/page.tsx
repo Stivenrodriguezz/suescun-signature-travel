@@ -40,7 +40,7 @@ export interface Destino {
 }
 
 // NUMERO DE WHATSAPP CORPORATIVO
-const WHATSAPP_NUMBER = "573214561822";
+const WHATSAPP_NUMBER = "16287266439";
 
 // 10 DESTINOS MÁS SOLICITADOS (5 FOTOS HD CADA UNO)
 const destinosPopulares: Destino[] = [
@@ -879,8 +879,8 @@ export default function CoordenadasPage() {
             <Link href="/" className="hover:text-[#C5A880] transition-colors">
               Inicio
             </Link>
-            <Link href="/destinos" className="text-[#C5A880] font-semibold">
-              Coordenadas
+            <Link href="/coordenadas" className="text-[#C5A880] font-semibold">
+            Coordenadas
             </Link>
             <a href="#servicios" className="hover:text-[#C5A880] transition-colors">
               Servicios

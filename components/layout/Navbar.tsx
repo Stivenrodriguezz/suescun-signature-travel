@@ -13,12 +13,12 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-black border-b border-[#C5A880]/30">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        
         {/* Logo */}
         <Link href="/" className="flex flex-col group">
           <span className="font-serif text-xl sm:text-2xl tracking-[0.2em] font-bold text-white uppercase group-hover:text-[#C5A880] transition-colors duration-300">
             Suescun
           </span>
+
           <span className="text-[9px] tracking-[0.35em] text-[#C5A880] uppercase font-light">
             Signature Travel
           </span>
@@ -26,16 +26,31 @@ export default function Navbar() {
 
         {/* Navegación Desktop */}
         <nav className="hidden md:flex items-center space-x-10 text-xs tracking-[0.2em] uppercase font-light text-neutral-300">
-          <Link href="/" className="hover:text-[#C5A880] transition-colors py-1">
+          <Link
+            href="/"
+            className="hover:text-[#C5A880] transition-colors py-1"
+          >
             Inicio
           </Link>
-          <Link href="/coordenadas" className="hover:text-[#C5A880] transition-colors py-1">
+
+          <Link
+            href="/coordenadas"
+            className="hover:text-[#C5A880] transition-colors py-1"
+          >
             Coordenadas
           </Link>
-          <Link href="/#servicios" className="hover:text-[#C5A880] transition-colors py-1">
+
+          <Link
+            href="/#servicios"
+            className="hover:text-[#C5A880] transition-colors py-1"
+          >
             Servicios
           </Link>
-          <Link href="/contacto" className="hover:text-[#C5A880] transition-colors py-1">
+
+          <Link
+            href="/contacto"
+            className="hover:text-[#C5A880] transition-colors py-1"
+          >
             Contacto
           </Link>
         </nav>
@@ -56,14 +71,19 @@ export default function Navbar() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden text-[#C5A880] p-2 focus:outline-none"
-            aria-label="Abrir menú"
+            aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={isOpen}
           >
-            {isOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+            {isOpen ? (
+              <X className="w-7 h-7" />
+            ) : (
+              <Menu className="w-7 h-7" />
+            )}
           </button>
         </div>
       </div>
 
-      {/* PANEL DESPLEGABLE MÓVIL */}
+      {/* Panel desplegable móvil */}
       {isOpen && (
         <div className="md:hidden fixed top-20 left-0 w-full bg-black border-b border-[#C5A880]/30 px-6 py-6 flex flex-col gap-2 text-center z-50 shadow-2xl">
           <Link
@@ -73,6 +93,7 @@ export default function Navbar() {
           >
             Inicio
           </Link>
+
           <Link
             href="/coordenadas"
             onClick={() => setIsOpen(false)}
@@ -80,6 +101,7 @@ export default function Navbar() {
           >
             Coordenadas
           </Link>
+
           <Link
             href="/#servicios"
             onClick={() => setIsOpen(false)}
@@ -87,6 +109,7 @@ export default function Navbar() {
           >
             Servicios
           </Link>
+
           <Link
             href="/contacto"
             onClick={() => setIsOpen(false)}

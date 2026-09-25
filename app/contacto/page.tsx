@@ -11,7 +11,6 @@ import {
   Users, 
   Building2, 
   ShieldCheck,
-  CreditCard,
   Globe,
   Sparkles,
   PhoneCall,
