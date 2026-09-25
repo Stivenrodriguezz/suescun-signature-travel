@@ -10,6 +10,7 @@ export default function Navbar() {
   const whatsappUrl =
     "https://wa.me/16287266439?text=Hola,%20deseo%20diseñar%20un%20viaje%20personalizado%20con%20Suescun%20Signature%20Travel.";
 
+  // 1. AQUÍ ESTÁN LAS OPCIONES CORREGIDAS
   const navLinks = [
     { name: "Inicio", href: "/" },
     { name: "Coordenadas", href: "/coordenadas" },
@@ -31,7 +32,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Navegación Desktop */}
+        {/* Navegación de Escritorio */}
         <nav className="hidden md:flex items-center space-x-10 text-xs tracking-[0.2em] uppercase font-light text-neutral-300">
           {navLinks.map((link) => (
             <Link
@@ -44,18 +45,19 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Botón WhatsApp & Menú Hamburguesa */}
+        {/* Botón WhatsApp Desktop y Botón Hamburguesa */}
         <div className="flex items-center gap-4">
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[#C5A880]/50 bg-[#C5A880]/10 text-[#C5A880] hover:bg-[#C5A880] hover:text-black transition-all duration-300 text-xs tracking-[0.15em] uppercase font-medium shadow-md shadow-[#C5A880]/10"
+            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[#C5A880]/50 bg-[#C5A880]/10 text-[#C5A880] hover:bg-[#C5A880] hover:text-black transition-all duration-300 text-xs tracking-[0.15em] uppercase font-medium shadow-md shadow-[#C5A880]/10"
           >
             <MessageCircle className="w-4 h-4" />
             <span>Contacto VIP</span>
           </a>
 
+          {/* Botón Hamburguesa para Móvil */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden text-white hover:text-[#C5A880] focus:outline-none p-2 transition-colors"
@@ -66,15 +68,15 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Menú Desplegable Móvil */}
+      {/* 2. MENÚ MÓVIL DESPLEGABLE (Posicionado absolutamente para que no se oculte) */}
       {isOpen && (
-        <div className="md:hidden bg-black/95 border-b border-[#C5A880]/20 px-6 py-6 flex flex-col gap-5 text-center backdrop-blur-xl animate-in slide-in-from-top-5 duration-200">
+        <div className="md:hidden absolute top-20 left-0 w-full bg-black/95 border-b border-[#C5A880]/20 px-6 py-6 flex flex-col gap-5 text-center backdrop-blur-xl shadow-2xl animate-in slide-in-from-top-2 duration-200">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="text-sm tracking-[0.2em] uppercase text-neutral-200 hover:text-[#C5A880] py-2 border-b border-neutral-900 transition-colors"
+              className="text-sm tracking-[0.2em] uppercase text-neutral-200 hover:text-[#C5A880] py-3 border-b border-neutral-900 transition-colors"
             >
               {link.name}
             </Link>
@@ -84,10 +86,10 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setIsOpen(false)}
-            className="inline-flex items-center justify-center gap-2 mt-2 px-6 py-3 rounded-full border border-[#C5A880] bg-[#C5A880] text-black text-xs tracking-[0.15em] uppercase font-semibold"
+            className="inline-flex items-center justify-center gap-2 mt-4 px-6 py-3 rounded-full border border-[#C5A880] bg-[#C5A880] text-black text-xs tracking-[0.15em] uppercase font-semibold"
           >
             <MessageCircle className="w-4 h-4" />
-            <span>Asesoría Directa por WhatsApp</span>
+            <span>Asesoría por WhatsApp</span>
           </a>
         </div>
       )}
