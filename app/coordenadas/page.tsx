@@ -9,7 +9,6 @@ import {
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
-  Calendar,
   DollarSign,
   Search,
   Sparkles,
@@ -18,7 +17,7 @@ import {
   Compass,
   MessageCircle,
   Award,
-  Users,
+  Menu,
 } from "lucide-react";
 
 export interface Destino {
@@ -791,10 +790,13 @@ const joyasOcultas: Destino[] = [
 ];
 
 export default function CoordenadasPage() {
+  type ActiveTab = "todos" | "populares" | "sinVisa" | "caribe" | "europa";
+
   const [selectedDestino, setSelectedDestino] = useState<Destino | null>(null);
   const [imgIndex, setImgIndex] = useState<number>(0);
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [activeTab, setActiveTab] = useState<"todos" | "populares" | "sinVisa" | "caribe" | "europa">("todos");
+  const [activeTab, setActiveTab] = useState<ActiveTab>("todos");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Abrir y cerrar modal
   const openModal = (destino: Destino) => {
@@ -857,51 +859,147 @@ export default function CoordenadasPage() {
           HEADER / ENCABEZADO PRINCIPAL (NAVBAR)
       ========================================== */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/85 backdrop-blur-xl border-b border-neutral-800/80 transition-all">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between gap-4">
-          
-          {/* Logo / Marca Corporativa */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-full border border-[#C5A880] flex items-center justify-center bg-black/60 group-hover:bg-[#C5A880] transition-all duration-300">
-              <Compass className="w-5 h-5 text-[#C5A880] group-hover:text-black transition-colors" />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-serif text-lg tracking-wider text-white group-hover:text-[#C5A880] transition-colors">
-                SUESCUN
-              </span>
-              <span className="text-[9px] uppercase tracking-[0.3em] text-[#C5A880]">
-                Signature Travel
-              </span>
-            </div>
-          </Link>
+  <div className="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between gap-4">
 
-          {/* Navegación Desktop */}
-          <nav className="hidden md:flex items-center gap-8 text-xs uppercase tracking-[0.2em] text-neutral-300 font-medium">
-            <Link href="/" className="hover:text-[#C5A880] transition-colors">
-              Inicio
-            </Link>
-            <Link href="/coordenadas" className="text-[#C5A880] font-semibold">
-            Coordenadas
-            </Link>
-            <a href="#servicios" className="hover:text-[#C5A880] transition-colors">
-              Servicios
-            </a>
-            <a href="/contacto" className="hover:text-[#C5A880] transition-colors">
-              Contacto
-            </a>
-          </nav>
+    {/* Logo / Marca Corporativa */}
+    <Link href="/" className="flex items-center gap-3 group">
+      <div className="w-10 h-10 rounded-full border border-[#C5A880] flex items-center justify-center bg-black/60 group-hover:bg-[#C5A880] transition-all duration-300">
+        <Compass className="w-5 h-5 text-[#C5A880] group-hover:text-black transition-colors" />
+      </div>
 
-          {/* Botón de Acción Directa en Navbar */}
-          <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola Suescun Signature Travel, deseo consultar asesoría para un itinerario a medida.")}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-2 bg-[#C5A880] text-black font-semibold text-xs tracking-wider uppercase px-5 py-2.5 rounded-full hover:brightness-110 transition-all shadow-md shadow-[#C5A880]/20"
-          >
-            <MessageCircle className="w-4 h-4" />
-            <span>Asesoría 1 a 1</span>
-          </a>
-        </div>
-      </header>
+      <div className="flex flex-col">
+        <span className="font-serif text-lg tracking-wider text-white group-hover:text-[#C5A880] transition-colors">
+          SUESCUN
+        </span>
+
+        <span className="text-[9px] uppercase tracking-[0.3em] text-[#C5A880]">
+          Signature Travel
+        </span>
+      </div>
+    </Link>
+
+    {/* Navegación Desktop */}
+    <nav className="hidden md:flex items-center gap-8 text-xs uppercase tracking-[0.2em] text-neutral-300 font-medium">
+      <Link
+        href="/"
+        className="hover:text-[#C5A880] transition-colors"
+      >
+        Inicio
+      </Link>
+
+      <Link
+        href="/coordenadas"
+        className="text-[#C5A880] font-semibold"
+      >
+        Coordenadas
+      </Link>
+
+      <a
+        href="#servicios"
+        className="hover:text-[#C5A880] transition-colors"
+      >
+        Servicios
+      </a>
+
+      <Link
+        href="/contacto"
+        className="hover:text-[#C5A880] transition-colors"
+      >
+        Contacto
+      </Link>
+    </nav>
+
+    {/* Acciones */}
+    <div className="flex items-center gap-3">
+
+      {/* WhatsApp Desktop */}
+      <a
+        href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+          "Hola Suescun Signature Travel, deseo consultar asesoría para un itinerario a medida."
+        )}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hidden sm:inline-flex items-center gap-2 bg-[#C5A880] text-black font-semibold text-xs tracking-wider uppercase px-5 py-2.5 rounded-full hover:brightness-110 transition-all shadow-md shadow-[#C5A880]/20"
+      >
+        <MessageCircle className="w-4 h-4" />
+        <span>Asesoría 1 a 1</span>
+      </a>
+
+      {/* Botón Menú Móvil */}
+      <button
+        type="button"
+        onClick={() => setIsMenuOpen((previous) => !previous)}
+        className="md:hidden inline-flex items-center justify-center text-[#C5A880] p-2 focus:outline-none"
+        aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+        aria-expanded={isMenuOpen}
+      >
+        {isMenuOpen ? (
+          <X className="w-7 h-7" />
+        ) : (
+          <Menu className="w-7 h-7" />
+        )}
+      </button>
+    </div>
+  </div>
+
+  {/* ==========================================
+      PANEL DESPLEGABLE MÓVIL
+  ========================================== */}
+  {isMenuOpen && (
+    <div className="md:hidden absolute top-20 left-0 w-full bg-black/95 backdrop-blur-xl border-b border-[#C5A880]/30 px-6 py-6 shadow-2xl">
+
+      <nav className="flex flex-col gap-1">
+
+        <Link
+          href="/"
+          onClick={() => setIsMenuOpen(false)}
+          className="text-sm tracking-[0.2em] uppercase text-white hover:text-[#C5A880] py-4 border-b border-neutral-800 transition-colors"
+        >
+          Inicio
+        </Link>
+
+        <Link
+          href="/coordenadas"
+          onClick={() => setIsMenuOpen(false)}
+          className="text-sm tracking-[0.2em] uppercase text-[#C5A880] py-4 border-b border-neutral-800 transition-colors"
+        >
+          Coordenadas
+        </Link>
+
+        <Link
+          href="/#servicios"
+          onClick={() => setIsMenuOpen(false)}
+          className="text-sm tracking-[0.2em] uppercase text-white hover:text-[#C5A880] py-4 border-b border-neutral-800 transition-colors"
+        >
+          Servicios
+        </Link>
+
+        <Link
+          href="/contacto"
+          onClick={() => setIsMenuOpen(false)}
+          className="text-sm tracking-[0.2em] uppercase text-white hover:text-[#C5A880] py-4 border-b border-neutral-800 transition-colors"
+        >
+          Contacto
+        </Link>
+
+        {/* WhatsApp móvil */}
+        <a
+          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+            "Hola Suescun Signature Travel, deseo consultar asesoría para un itinerario a medida."
+          )}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setIsMenuOpen(false)}
+          className="flex items-center justify-center gap-2 bg-[#C5A880] text-black font-semibold text-xs tracking-[0.15em] uppercase px-6 py-3.5 rounded-full w-full mt-5 hover:brightness-110 transition-all shadow-lg shadow-[#C5A880]/20"
+        >
+          <MessageCircle className="w-4 h-4" />
+          <span>Asesoría 1 a 1</span>
+        </a>
+
+      </nav>
+    </div>
+  )}
+</header>
 
       {/* ==========================================
           CONTENIDO PRINCIPAL
@@ -962,7 +1060,7 @@ export default function CoordenadasPage() {
               ].map((tab) => (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id as any)}
+                  onClick={() => setActiveTab(tab.id as ActiveTab)}
                   className={`text-xs px-4 py-2 rounded-full tracking-wider whitespace-nowrap transition-all duration-300 ${
                     activeTab === tab.id
                       ? "bg-[#C5A880] text-black font-semibold shadow-md shadow-[#C5A880]/20"
@@ -996,7 +1094,7 @@ export default function CoordenadasPage() {
               <div
                 key={dest.id}
                 onClick={() => openModal(dest)}
-                className="group cursor-pointer relative rounded-2xl overflow-hidden border border-neutral-800/90 bg-neutral-900/40 hover:border-[#C5A880]/80 transition-all duration-500 flex flex-col justify-between h-[420px] shadow-xl hover:shadow-2xl hover:shadow-[#C5A880]/10"
+                className="group cursor-pointer relative rounded-2xl overflow-hidden border border-neutral-800/90 bg-neutral-900/40 hover:border-[#C5A880]/80 transition-all duration-500 flex flex-col justify-between h-105 shadow-xl hover:shadow-2xl hover:shadow-[#C5A880]/10"
               >
                 {/* Imagen Principal de Portada */}
                 <img
