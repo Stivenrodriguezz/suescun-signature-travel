@@ -10,7 +10,6 @@ export default function Navbar() {
   const whatsappUrl =
     "https://wa.me/16287266439?text=Hola,%20deseo%20diseñar%20un%20viaje%20personalizado%20con%20Suescun%20Signature%20Travel.";
 
-  // 1. AQUÍ ESTÁN LAS OPCIONES CORREGIDAS
   const navLinks = [
     { name: "Inicio", href: "/" },
     { name: "Coordenadas", href: "/coordenadas" },
@@ -32,7 +31,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Navegación de Escritorio */}
+        {/* Navegación Desktop */}
         <nav className="hidden md:flex items-center space-x-10 text-xs tracking-[0.2em] uppercase font-light text-neutral-300">
           {navLinks.map((link) => (
             <Link
@@ -57,10 +56,10 @@ export default function Navbar() {
             <span>Contacto VIP</span>
           </a>
 
-          {/* Botón Hamburguesa para Móvil */}
+          {/* Botón Hamburguesa */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white hover:text-[#C5A880] focus:outline-none p-2 transition-colors"
+            className="md:hidden text-[#C5A880] p-2 focus:outline-none transition-colors"
             aria-label="Abrir menú"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -68,7 +67,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* 2. MENÚ MÓVIL DESPLEGABLE (Posicionado absolutamente para que no se oculte) */}
+      {/* Menú Desplegable Móvil */}
       {isOpen && (
         <div className="md:hidden absolute top-20 left-0 w-full bg-black/95 border-b border-[#C5A880]/20 px-6 py-6 flex flex-col gap-5 text-center backdrop-blur-xl shadow-2xl animate-in slide-in-from-top-2 duration-200">
           {navLinks.map((link) => (
@@ -86,10 +85,10 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setIsOpen(false)}
-            className="inline-flex items-center justify-center gap-2 mt-4 px-6 py-3 rounded-full border border-[#C5A880] bg-[#C5A880] text-black text-xs tracking-[0.15em] uppercase font-semibold"
+            className="inline-flex items-center justify-center gap-2 mt-4 px-6 py-3 rounded-full border border-[#C5A880] bg-[#C5A880] text-black text-xs tracking-[0.15em] uppercase font-semibold transition-all hover:bg-[#b0926b]"
           >
             <MessageCircle className="w-4 h-4" />
-            <span>Asesoría por WhatsApp</span>
+            <span>Asesoría Directa por WhatsApp</span>
           </a>
         </div>
       )}

@@ -882,7 +882,7 @@ export default function CoordenadasPage() {
             <Link href="/destinos" className="text-[#C5A880] font-semibold">
               Coordenadas
             </Link>
-            <a href="#experiencias" className="hover:text-[#C5A880] transition-colors">
+            <a href="#servicios" className="hover:text-[#C5A880] transition-colors">
               Servicios
             </a>
             <a href="/contacto" className="hover:text-[#C5A880] transition-colors">

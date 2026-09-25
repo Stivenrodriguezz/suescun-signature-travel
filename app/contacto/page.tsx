@@ -52,7 +52,7 @@ export default function ContactoPage() {
     e.preventDefault();
 
     const mensajeWhatsApp = 
-`🏛️ *NUEVA SOLICITUD DE COTIZACIÓN VIP*
+`🏛️ *NUEVA SOLICITUD DE COTIZACIÓN*
 *SUESCUN SIGNATURE TRAVEL*
 
 👤 *1. DATOS DEL CLIENTE*
