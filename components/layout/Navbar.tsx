@@ -31,7 +31,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Navegación Desktop */}
+        {/* Navegación de Escritorio */}
         <nav className="hidden md:flex items-center space-x-10 text-xs tracking-[0.2em] uppercase font-light text-neutral-300">
           {navLinks.map((link) => (
             <Link
@@ -44,7 +44,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Botón WhatsApp Desktop y Botón Hamburguesa */}
+        {/* Botón WhatsApp Desktop y Botón Hamburguesa Móvil */}
         <div className="flex items-center gap-4">
           <a
             href={whatsappUrl}
@@ -56,9 +56,9 @@ export default function Navbar() {
             <span>Contacto VIP</span>
           </a>
 
-          {/* Botón Hamburguesa */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
+          {/* Menú Mobile Hamburguesa */}
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
             className="md:hidden text-[#C5A880] p-2 focus:outline-none transition-colors"
             aria-label="Abrir menú"
           >
@@ -67,15 +67,15 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Menú Desplegable Móvil */}
+      {/* Desplegable Móvil */}
       {isOpen && (
-        <div className="md:hidden absolute top-20 left-0 w-full bg-black/95 border-b border-[#C5A880]/20 px-6 py-6 flex flex-col gap-5 text-center backdrop-blur-xl shadow-2xl animate-in slide-in-from-top-2 duration-200">
+        <div className="md:hidden absolute top-20 left-0 w-full bg-black/95 border-b border-[#C5A880]/20 px-6 py-6 flex flex-col gap-4 text-center backdrop-blur-xl shadow-2xl animate-in slide-in-from-top-2 duration-200">
           {navLinks.map((link) => (
-            <Link
+            <Link 
               key={link.name}
-              href={link.href}
+              href={link.href} 
               onClick={() => setIsOpen(false)}
-              className="text-sm tracking-[0.2em] uppercase text-neutral-200 hover:text-[#C5A880] py-3 border-b border-neutral-900 transition-colors"
+              className="block text-xs uppercase tracking-[0.2em] text-neutral-300 hover:text-[#C5A880] py-2 border-b border-neutral-900 transition-colors"
             >
               {link.name}
             </Link>
@@ -85,7 +85,7 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setIsOpen(false)}
-            className="inline-flex items-center justify-center gap-2 mt-4 px-6 py-3 rounded-full border border-[#C5A880] bg-[#C5A880] text-black text-xs tracking-[0.15em] uppercase font-semibold transition-all hover:bg-[#b0926b]"
+            className="flex items-center justify-center gap-2 bg-[#C5A880] text-black font-semibold text-xs tracking-wider uppercase px-5 py-3 rounded-full w-full mt-2 transition-all hover:bg-[#b0926b]"
           >
             <MessageCircle className="w-4 h-4" />
             <span>Asesoría Directa por WhatsApp</span>
