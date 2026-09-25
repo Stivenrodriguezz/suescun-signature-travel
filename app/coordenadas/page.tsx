@@ -953,7 +953,7 @@ export default function CoordenadasPage() {
         <Link
           href="/"
           onClick={() => setIsMenuOpen(false)}
-          className="text-sm tracking-[0.2em] uppercase text-white hover:text-[#C5A880] py-4 border-b border-neutral-800 transition-colors"
+          className="text-xs tracking-[0.2em] uppercase text-white hover:text-[#C5A880] py-4 border-b border-neutral-800 transition-colors"
         >
           Inicio
         </Link>
@@ -961,7 +961,7 @@ export default function CoordenadasPage() {
         <Link
           href="/coordenadas"
           onClick={() => setIsMenuOpen(false)}
-          className="text-sm tracking-[0.2em] uppercase text-[#C5A880] py-4 border-b border-neutral-800 transition-colors"
+          className="text-xs tracking-[0.2em] uppercase text-[#C5A880] py-4 border-b border-neutral-800 transition-colors"
         >
           Coordenadas
         </Link>
@@ -969,7 +969,7 @@ export default function CoordenadasPage() {
         <Link
           href="/#servicios"
           onClick={() => setIsMenuOpen(false)}
-          className="text-sm tracking-[0.2em] uppercase text-white hover:text-[#C5A880] py-4 border-b border-neutral-800 transition-colors"
+          className="text-xs tracking-[0.2em] uppercase text-white hover:text-[#C5A880] py-4 border-b border-neutral-800 transition-colors"
         >
           Servicios
         </Link>
@@ -977,7 +977,7 @@ export default function CoordenadasPage() {
         <Link
           href="/contacto"
           onClick={() => setIsMenuOpen(false)}
-          className="text-sm tracking-[0.2em] uppercase text-white hover:text-[#C5A880] py-4 border-b border-neutral-800 transition-colors"
+          className="text-xs tracking-[0.2em] uppercase text-white hover:text-[#C5A880] py-4 border-b border-neutral-800 transition-colors"
         >
           Contacto
         </Link>
