@@ -110,12 +110,12 @@ function Navbar() {
           ========================================== */}
 
       {isOpen && (
-        <div className="md:hidden absolute top-20 left-0 w-full bg-black/95 backdrop-blur-md border-b border-[#C5A880]/30 px-6 py-6 flex flex-col gap-2 text-center shadow-2xl">
+        <div className="md:hidden bg-neutral-900 border-b border-[#C5A880]/20 px-6 py-6 space-y-4">
 
           <a
             href="#inicio"
             onClick={() => setIsOpen(false)}
-            className="text-sm tracking-[0.2em] uppercase text-white hover:text-[#C5A880] py-3 border-b border-neutral-800 block"
+            className="text-xs tracking-[0.2em] uppercase text-white hover:text-[#C5A880] py-3 border-b border-neutral-800 block"
           >
             Inicio
           </a>
@@ -123,7 +123,7 @@ function Navbar() {
           <Link
             href="/coordenadas"
             onClick={() => setIsOpen(false)}
-            className="text-sm tracking-[0.2em] uppercase text-white hover:text-[#C5A880] py-3 border-b border-neutral-800 block"
+            className="text-xs tracking-[0.2em] uppercase text-white hover:text-[#C5A880] py-3 border-b border-neutral-800 block"
           >
             Coordenadas
           </Link>
@@ -131,7 +131,7 @@ function Navbar() {
           <a
             href="#servicios"
             onClick={() => setIsOpen(false)}
-            className="text-sm tracking-[0.2em] uppercase text-white hover:text-[#C5A880] py-3 border-b border-neutral-800 block"
+            className="text-xs tracking-[0.2em] uppercase text-white hover:text-[#C5A880] py-3 border-b border-neutral-800 block"
           >
             Servicios
           </a>
@@ -139,7 +139,7 @@ function Navbar() {
           <Link
             href="/contacto"
             onClick={() => setIsOpen(false)}
-            className="text-sm tracking-[0.2em] uppercase text-white hover:text-[#C5A880] py-3 border-b border-neutral-800 block"
+            className="text-xs tracking-[0.2em] uppercase text-white hover:text-[#C5A880] py-3 border-b border-neutral-800 block"
           >
             Contacto
           </Link>
